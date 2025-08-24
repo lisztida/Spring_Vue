@@ -1,0 +1,5 @@
+|src:源码
+    |SpringbootApplication:工程的启动类
+    |application.yml:工程的配置文件
+    |target:源码编译后的文件目录
+ |pom.xml:定义springboot工程的所有依赖项，springboot加载的时候会扫描这个文件里面所有的依赖项然后下载

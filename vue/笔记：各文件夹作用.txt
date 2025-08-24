@@ -1,0 +1,18 @@
+|src:
+	|assets：一般存放代码引用的静态文件，比如：css,js,img
+	|components：存放vue组件（可复用的代码块）
+	|router：定义路由文件的目录
+	|views：存放vue网页文件的目录
+	|App.vue:vue页面全局的入口，所有vue文件的父级
+	|main.js：代码的配置文件，引用第三方得到组件或者我们自己定义的组件
+
+|index.html:vue编译成网页才能在浏览器渲染,index.html是所有网页的入口
+
+|jsconfig.json:（不用管）内部配置文件
+|package.json:定义依赖库的文件,说明依赖了哪些包,npm install下载的包本体在node_modules文件夹里面
+|package-lock.json:下载依赖时候锁定版本的一个文件
+
+|vite.config.js:全局的配置文件
+
+
+
