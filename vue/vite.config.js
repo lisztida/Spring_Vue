@@ -2,8 +2,6 @@ import { fileURLToPath, URL } from 'node:url'
 
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
-import vueDevTools from 'vite-plugin-vue-devtools'
-// https://vite.dev/config/
 
 
 import AutoImport from 'unplugin-auto-import/vite' //自动导入vue中的组件
@@ -15,7 +13,6 @@ import {ElementPlusResolver} from "unplugin-vue-components/resolvers";//对应�
 export default defineConfig({
   plugins: [
     vue(),
-    vueDevTools(),
     AutoImport({resolvers:[ElementPlusResolver()]}),//element-plus按需导入
     Components({resolvers:[ElementPlusResolver({importStyle:'sass'})]}),//配置elementPlus采用sass式样配置系统
   ],

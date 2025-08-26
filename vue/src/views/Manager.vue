@@ -8,9 +8,8 @@
       </div>
 
       <div style="flex: 1;display: flex;align-items: center;margin-left:70px;padding-left: 10px;border-left: 6px solid #ff0000;color:#000000;font-size: 20px;font-weight: bold">
-        首页
+        <span @click="router.push('/manager/home')" >首页</span> / {{router.currentRoute.value.meta.name}}
       </div>
-
       <div style="width: fit-content;display: flex;align-items: center;padding-right: 20px;border-bottom: 1px solid #ddd">
        <el-dropdown>
          <div style="display: flex;align-items: center">
@@ -31,7 +30,6 @@
     <!--头部区域结束 -->
 
 
-
     <!--下方区域开始 -->
     <div style="display: flex">
       <!--菜单区域开始 -->
@@ -46,9 +44,9 @@
           <el-sub-menu index="1">
             <template #title>
               <el-icon><location /></el-icon>
-              <span>一级菜单</span>
+              <span>用户管理</span>
             </template>
-            <el-menu-item index="/manager/test_menu">二级菜单-1</el-menu-item>
+            <el-menu-item index="/manager/admin">管理员信息</el-menu-item>
             <el-menu-item index="/manager/about">关于我</el-menu-item>
           </el-sub-menu>
         </el-menu>
@@ -67,8 +65,11 @@
   </div>
 </template>
 
-<script setup>
 
+
+
+
+<script setup>
 import router from "@/router/index.js";
 </script>
 

@@ -7,8 +7,17 @@ public class Admin {
     private Integer id;
     private String username;
     private String password;
+    private String name;
     private String phone;
     private String email;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public Integer getId() {
         return id;

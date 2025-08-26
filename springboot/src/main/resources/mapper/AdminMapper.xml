@@ -5,7 +5,12 @@
 <mapper namespace="com.example.springboot.mapper.AdminMapper">
 
     <select id="selectAll" resultType="com.example.springboot.entity.Admin">
-        select * from `admin` order by id desc
+        select * from `admin`
+        <where>
+            <if test="username != null">username like concat('%', #{username},'%')</if>
+            <if test="name != null">and name like concat('%', #{name}, '%')</if>
+        </where>
+        order by id desc
     </select>
 
 </mapper>
