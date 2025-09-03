@@ -2,6 +2,7 @@ package com.example.springboot.service;
 
 
 import cn.hutool.core.util.StrUtil;
+import com.example.springboot.entity.Account;
 import com.example.springboot.entity.Admin;
 import com.example.springboot.exception.CustomerException;
 import com.example.springboot.mapper.AdminMapper;
@@ -32,6 +33,7 @@ public class AdminService {
         //默认密码
         if(StrUtil.isBlank(admin.getPassword())){
             admin.setPassword("admin");
+            admin.setRole("ADMIN");
         }
         adminMapper.insert(admin);
     }
@@ -64,5 +66,17 @@ public class AdminService {
     }
 
 
+    public Admin login(Account account) {
+        // 1、验证账号是否存在
+        Admin dbAdmin=adminMapper.selectByUsername(account.getUsername());
+        if(dbAdmin == null){
+            throw new CustomerException("账号不存在");
+        }
+        // 验证密码是否正确
+        if (!dbAdmin.getPassword().equals((account.getPassword()))){
+            throw new CustomerException("账号或密码错误");
+        }
+        return dbAdmin;
 
+    }
 }

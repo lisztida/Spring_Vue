@@ -1,9 +1,9 @@
 package com.example.springboot.entity;
 
 /**
- * 管理员信息
+ * 普通用户信息
  */
-public class Admin extends Account {
+public class User extends Account {
     private Integer id;
     private String username;
     private String password;
@@ -20,7 +20,6 @@ public class Admin extends Account {
     }
 
     private String role;
-
 
     public String getName() {
         return name;

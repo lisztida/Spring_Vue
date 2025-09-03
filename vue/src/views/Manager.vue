@@ -14,13 +14,13 @@
        <el-dropdown>
          <div style="display: flex;align-items: center">
            <img src="@/assets/imgs/profle.jpg" style="width: 50px;border-radius: 50%"  alt="">
-           <span style="margin-left: 5px">管理员</span>
+           <span style="margin-left: 5px">{{data.user?.name}}</span>
          </div>
          <template #dropdown>
            <el-dropdown-menu>
              <el-dropdown-item>个人信息</el-dropdown-item>
              <el-dropdown-item>修改密码</el-dropdown-item>
-             <el-dropdown-item>退出登录</el-dropdown-item>
+             <el-dropdown-item @click="logout">退出登录</el-dropdown-item>
            </el-dropdown-menu>
          </template>
        </el-dropdown>
@@ -47,6 +47,7 @@
               <span>用户管理</span>
             </template>
             <el-menu-item index="/manager/admin">管理员信息</el-menu-item>
+            <el-menu-item index="/manager/user">普通信息信息</el-menu-item>
             <el-menu-item index="/manager/about">关于我</el-menu-item>
           </el-sub-menu>
         </el-menu>
@@ -71,6 +72,26 @@
 
 <script setup>
 import router from "@/router/index.js";
+import {reactive} from "vue";
+
+
+const data = reactive({
+  user:JSON.parse(localStorage.getItem('code_user')||"{}")
+
+})
+
+const logout =()=>{
+  localStorage.removeItem('code_user')
+  location.href='/login'
+}
+
+if(!data.user.id){
+  location.href='/login'
+}
+
+
+
+
 </script>
 
 <style>
