@@ -24,9 +24,16 @@
 定义formRef作为表单的引用
 通过formRef对象进行表单验证-->
       <el-button type="danger" @click ="deleteBatch" >批量删除</el-button>
-      <el-button type="success">批量导入</el-button>
-      <el-button type="info">批量导出</el-button>
+      <el-button type="info" @click="exportData">批量导出</el-button>
+      <el-upload action="http://localhost:9999/admin/import"
+       style="display: inline-block;margin-left: 10px "
+      :show-file-list="false"
+      :on-success="handleImportSuccess"
+      >
+        <el-button type="success">批量导入</el-button>
+      </el-upload>
     </div>
+
     <div class="card" style="margin-bottom: 5px">
       <el-table :data="data.tableData" style="width: 100%" @selection-change="handleSelectionChange"
                 :header-cell-style="{fontWeight:'bold', color:'#333',backgroundColor:'#eaf4ff'}">
@@ -87,8 +94,8 @@ import {reactive,ref} from "vue";
 import request from "@/utils/request.js";
 import {ElMessage, ElMessageBox} from "element-plus";
 const  data=reactive({
-  username:null,
-  name:null,
+  username:'',
+  name:'',
   pageNum:1,
   pageSize:5,
   total:0,
@@ -138,8 +145,8 @@ const load = () =>{
 load()
 
 const reset = () =>{
-  data.username = null
-  data.name = null
+  data.username = ''
+  data.name = ''
   load()
 }
 
@@ -229,7 +236,16 @@ const deleteBatch = () =>{
   }).catch(err =>{})
 }
 
+const exportData = () =>{
+  let url =`http://localhost:9999/admin/export?username=${data.username}&name=${data.name}`
+  window.open(url) //open() 方法用于打开一个新的浏览器窗口或查找一个已命名的窗口。
 
+}
+
+const handleImportSuccess =()=>{
+  ElMessage.success("批量导入成功")
+  load();
+}
 
 
 </script>

@@ -7,8 +7,8 @@
     <select id="selectAll" resultType="com.example.springboot.entity.Admin">
         select * from `admin`
         <where>
-            <if test="username != null">username like concat('%', #{username},'%')</if>
-            <if test="name != null">and name like concat('%', #{name}, '%')</if>
+            <if test="username != null and username != ''">username like concat('%', #{username},'%')</if>
+            <if test="name != null and name != ''">and name like concat('%', #{name}, '%')</if>
         </where>
         order by id desc
     </select>
