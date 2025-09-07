@@ -94,8 +94,9 @@ import {reactive,ref} from "vue";
 import request from "@/utils/request.js";
 import {ElMessage, ElMessageBox} from "element-plus";
 const  data=reactive({
-  username:'',
-  name:'',
+  user:Json.parse(localStorage.getItem('code_user')||'{}'),
+  username:null,
+  name:null,
   pageNum:1,
   pageSize:5,
   total:0,
@@ -237,7 +238,7 @@ const deleteBatch = () =>{
 }
 
 const exportData = () =>{
-  let url =`http://localhost:9999/admin/export?username=${data.username}&name=${data.name}`
+  let url =`http://localhost:9999/admin/export?username=${data.username}&name=${data.name}`+`&token=${data.user.token}`
   window.open(url) //open() 方法用于打开一个新的浏览器窗口或查找一个已命名的窗口。
 
 }

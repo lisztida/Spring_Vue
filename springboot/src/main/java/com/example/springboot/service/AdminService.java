@@ -6,6 +6,7 @@ import com.example.springboot.entity.Account;
 import com.example.springboot.entity.Admin;
 import com.example.springboot.exception.CustomerException;
 import com.example.springboot.mapper.AdminMapper;
+import com.example.springboot.utils.TokenUtils;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import jakarta.annotation.Resource;
@@ -53,6 +54,13 @@ public class AdminService {
 
     }
 
+    public Admin selectById(String id) {
+        return  adminMapper.selectById(id);
+
+    }
+
+
+
     public List<Admin> selectAll(Admin admin){
         return adminMapper.selectAll(admin);
 
@@ -76,7 +84,12 @@ public class AdminService {
         if (!dbAdmin.getPassword().equals((account.getPassword()))){
             throw new CustomerException("账号或密码错误");
         }
+        //创建token并返回给前端
+        String token=TokenUtils.createToken(dbAdmin.getId()+"-"+"ADMIN",dbAdmin.getPassword());
+        dbAdmin.setToken(token);
         return dbAdmin;
 
     }
+
+
 }

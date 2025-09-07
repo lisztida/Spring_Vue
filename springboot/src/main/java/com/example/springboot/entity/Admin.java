@@ -11,6 +11,18 @@ public class Admin extends Account {
     private String phone;
     private String email;
 
+    @Override
+    public String getToken() {
+        return token;
+    }
+
+    @Override
+    public void setToken(String token) {
+        this.token = token;
+    }
+
+    private String token;
+
     public String getRole() {
         return role;
     }

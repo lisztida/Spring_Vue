@@ -11,12 +11,17 @@ const request=axios.create({
 // 可以自请求发送前对请求做一些处理
 request.interceptors.request.use(config=>{
     config.headers['Content-Type']='application/json;charset=utf-8';
+    let user=JSON.parse(localStorage.getItem('code_user')||'{}')
+    config.headers['token'] = user.token
     return config
 },error=>{
     return Promise.reject(error)
     }
 );
 
+
+//response拦截器
+//可以在接口响应后统一处理结束
 request.interceptors.response.use(
     response => {
         let res = response.data;
@@ -24,7 +29,12 @@ request.interceptors.response.use(
         if(typeof res === 'string'){
             res = res ? JSON.parse(res) : res
         }
-        return res;
+        if(res.code ==='401'){
+            ElMessage.error(res.msg)
+            router.push('/login')
+        }
+        else {
+            return res;}
     },
     error => {
         if(error.response.status === 404){

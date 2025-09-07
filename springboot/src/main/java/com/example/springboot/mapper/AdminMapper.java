@@ -19,6 +19,10 @@ public interface AdminMapper {
 
     @Delete("delete from admin where id = #{id}")
     void deleteById(Integer id);
+
+    @Select("select * from `admin` where id =#{id}")
+    Admin selectById(String id);
+
 }
 
 /**

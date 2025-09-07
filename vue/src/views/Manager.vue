@@ -85,9 +85,9 @@ const logout =()=>{
   location.href='/login'
 }
 
-if(!data.user.id){
-  location.href='/login'
-}
+// if(!data.user.id){
+//   location.href='/login'
+// } //不使用
 
 
 

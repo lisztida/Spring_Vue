@@ -6,6 +6,7 @@ import com.example.springboot.entity.Account;
 import com.example.springboot.entity.User;
 import com.example.springboot.exception.CustomerException;
 import com.example.springboot.mapper.UserMapper;
+import com.example.springboot.utils.TokenUtils;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import jakarta.annotation.Resource;
@@ -55,6 +56,10 @@ public class UserService {
 
     }
 
+    public User selectById(String id) {
+        return userMapper.selectById(id);
+    }
+
     public List<User> selectAll(User user){
         return userMapper.selectAll(user);
 
@@ -78,11 +83,15 @@ public class UserService {
         if (!dbUser.getPassword().equals((account.getPassword()))){
             throw new CustomerException("账号或密码错误");
         }
-        return dbUser;
 
+        String token= TokenUtils.createToken(dbUser.getId()+"-"+"USER",dbUser.getPassword());
+        dbUser.setToken(token);
+        return dbUser;
     }
 
     public void register(User user) {
         this.add(user);
     }
+
+
 }

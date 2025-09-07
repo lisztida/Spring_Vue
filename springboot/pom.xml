@@ -54,12 +54,21 @@
             <version>5.8.25</version>
         </dependency>
 
-
+        <!--处理office文件的依赖-->
         <dependency>
             <groupId>org.apache.poi</groupId>
             <artifactId>poi-ooxml</artifactId>
             <version>5.2.3</version>
         </dependency>
+
+
+      <!--    JWT   -->
+        <dependency>
+            <groupId>com.auth0</groupId>
+            <artifactId>java-jwt</artifactId>
+            <version>4.3.0</version>
+        </dependency>
+
 
 
 
