@@ -7,6 +7,8 @@ public class Account {
     private String name;
     private String phone;
     private String email;
+    private String token;
+
 
     public String getToken() {
         return token;
@@ -15,8 +17,6 @@ public class Account {
     public void setToken(String token) {
         this.token = token;
     }
-
-    private String token;
 
     public String getRole() {
         return role;

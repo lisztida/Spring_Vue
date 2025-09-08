@@ -35,16 +35,17 @@ public class WebController {
     @PostMapping("/login")
     public Result login(@RequestBody Account account){
         Account dbAccount =null;
-       if("ADMIN".equals(account.getRole()))
-        {Admin dbAdmin =adminService.login(account);
+        if("ADMIN".equals(account.getRole())) {
+            dbAccount=adminService.login(account);
         }else if ("USER".equals(account.getRole())){
-           userService.login(account);
+            dbAccount = userService.login(account);
         } else {
-           throw new CustomerException("非法请求");
-       }
+            throw new CustomerException("非法请求");
+        }
 
         return Result.success(dbAccount);
     }
+
 
     @PostMapping("/register")
     public Result register(@RequestBody User user){

@@ -85,7 +85,7 @@ public class AdminService {
             throw new CustomerException("账号或密码错误");
         }
         //创建token并返回给前端
-        String token=TokenUtils.createToken(dbAdmin.getId()+"-"+"ADMIN",dbAdmin.getPassword());
+        String token=TokenUtils.createToken(dbAdmin.getId() + "-" + "ADMIN",dbAdmin.getPassword());
         dbAdmin.setToken(token);
         return dbAdmin;
 

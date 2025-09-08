@@ -10,6 +10,7 @@ public class Admin extends Account {
     private String name;
     private String phone;
     private String email;
+    private String token;
 
     @Override
     public String getToken() {
@@ -21,7 +22,7 @@ public class Admin extends Account {
         this.token = token;
     }
 
-    private String token;
+
 
     public String getRole() {
         return role;

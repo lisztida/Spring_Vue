@@ -22,8 +22,6 @@ public class User extends Account {
         this.token = token;
     }
 
-
-
     public String getRole() {
         return role;
     }

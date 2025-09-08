@@ -84,7 +84,7 @@ public class UserService {
             throw new CustomerException("账号或密码错误");
         }
 
-        String token= TokenUtils.createToken(dbUser.getId()+"-"+"USER",dbUser.getPassword());
+        String token= TokenUtils.createToken(dbUser.getId() + "-" + "USER",dbUser.getPassword());
         dbUser.setToken(token);
         return dbUser;
     }

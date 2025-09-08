@@ -94,7 +94,7 @@ import {reactive,ref} from "vue";
 import request from "@/utils/request.js";
 import {ElMessage, ElMessageBox} from "element-plus";
 const  data=reactive({
-  user:Json.parse(localStorage.getItem('code_user')||'{}'),
+  user:JSON.parse(localStorage.getItem('code_user')||'{}'),
   username:null,
   name:null,
   pageNum:1,

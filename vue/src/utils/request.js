@@ -1,5 +1,6 @@
 import axios from "axios";
 import {ElMessage} from "element-plus";
+import router from "@/router/index.js";
 
 const request=axios.create({
     baseURL:'http://localhost:9999',
