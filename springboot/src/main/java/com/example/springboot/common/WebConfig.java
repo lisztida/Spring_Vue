@@ -11,7 +11,8 @@ public class WebConfig implements WebMvcConfigurer {
     public void addInterceptors(InterceptorRegistry registry){
         registry.addInterceptor(jwtInterceptor()).
                 addPathPatterns("/**")
-                .excludePathPatterns("/login","/register");
+                .excludePathPatterns("/login","/register","/files/download/**");
+        //接口放行，不鉴权，就是说有哪些接口不用token就能直接访问
         //除了login和register以外的页面都要做验证，因为login是没有token时访问的，register是没有账号时访问的
     }
 

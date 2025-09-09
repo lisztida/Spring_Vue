@@ -10,7 +10,17 @@ public class Admin extends Account {
     private String name;
     private String phone;
     private String email;
+    private String role;
     private String token;
+    private String avatar;
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
+    }
 
     @Override
     public String getToken() {
@@ -32,7 +42,7 @@ public class Admin extends Account {
         this.role = role;
     }
 
-    private String role;
+
 
 
     public String getName() {

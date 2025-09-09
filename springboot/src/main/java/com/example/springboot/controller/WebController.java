@@ -19,6 +19,7 @@ public class WebController {
 
     @Resource
     AdminService adminService;
+    @Resource
     UserService userService;
 
     @GetMapping("/") //接口的路径，全局唯一，()中的/表示路由，
@@ -37,8 +38,8 @@ public class WebController {
         Account dbAccount =null;
         if("ADMIN".equals(account.getRole())) {
             dbAccount=adminService.login(account);
-        }else if ("USER".equals(account.getRole())){
-            dbAccount = userService.login(account);
+        } else if ("USER".equals(account.getRole())){
+            dbAccount =userService.login(account);
         } else {
             throw new CustomerException("非法请求");
         }

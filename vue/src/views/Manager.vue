@@ -13,7 +13,8 @@
       <div style="width: fit-content;display: flex;align-items: center;padding-right: 20px;border-bottom: 1px solid #ddd">
        <el-dropdown>
          <div style="display: flex;align-items: center">
-           <img src="@/assets/imgs/profle.jpg" style="width: 50px;border-radius: 50%"  alt="">
+           <img v-if="data.user?.avatar" src="@/assets/imgs/profle.jpg" style="width: 50px;border-radius: 50%" :src="data.user?.avatar"/>
+           <img v-else src="@/assets/imgs/profle.jpg" style="width: 50px;border-radius: 50%"  alt="">
            <span style="margin-left: 5px">{{data.user?.name}}</span>
          </div>
          <template #dropdown>

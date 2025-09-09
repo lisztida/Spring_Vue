@@ -22,6 +22,7 @@ public class JWTInterceptor implements HandlerInterceptor {
 
     @Resource
     AdminService adminService;
+    @Resource
     UserService userService;
 
     @Override

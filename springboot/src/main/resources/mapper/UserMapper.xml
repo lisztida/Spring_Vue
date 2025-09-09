@@ -14,12 +14,12 @@
     </select>
 
     <insert id ="insert">
-        insert into `user` (username,password,name,phone,email,role)
-        values (#{username},#{password},#{name},#{phone},#{email},#{role})
+        insert into `user` (username,password,name,phone,email,role,avatar)
+        values (#{username},#{password},#{name},#{phone},#{email},#{role},#{avatar})
     </insert>
 
     <update id="updateById">
-        update 'user' set username = #{username}, password = #{password} , name =#{name} , phone = #{phone}, email=#{email}, role=#{role}}
+        update `user` set username = #{username}, password = #{password} , name =#{name},phone=#{phone},email=#{email},role=#{role},avatar = #{avatar}
         where id = #{id}
     </update>
 
